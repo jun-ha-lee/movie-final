@@ -8,7 +8,9 @@ function Movie({ mediumCoverImage, title, summary, genres, movieId }) { // props
       <h2>
         <Link to={`/movie/${movieId}`}>{title}</Link>{/* 제목을 클릭하면 /movie페이지로 이동, 왜쓰냐면 전체페이지를 로딩하지 않음(새로고침안하고 넘어감) */}
       </h2>
-      <p>{summary}</p>
+      <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
+      {/* summary의 글자가 235글자보다 크면 slice하고, 작으면 그대로 출력 */}
+      {/* .slice(시작숫자,끝숫자) */}
       <ul>
         {genres ? genres.map((movieGenre) => <li key={movieGenre}>{movieGenre}</li>) : <li>no genre</li>}
       </ul>
